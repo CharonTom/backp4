@@ -8,7 +8,7 @@ const server = http.createServer(app);
 
 // Utilise l'URL de ton frontend pour permettre l'accès au backend
 // Si ton frontend est sur Vercel, remplace l'URL ci-dessous par l'URL correcte de ton frontend
-const FRONTEND_URL = "https://ton-frontend.vercel.app"; // Remplace par l'URL réelle de ton frontend
+const FRONTEND_URL = "https://backp4.onrender.com/"; // Remplace par l'URL réelle de ton frontend
 
 // Configuration CORS pour Socket.IO
 const io = new Server(server, {

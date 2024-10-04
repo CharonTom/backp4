@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 
 // URL de ton frontend sur Vercel et localhost pour le développement
-const FRONTEND_URL_VERCEL = "https://front4p.vercel.app"; // URL du frontend sur Vercel
+const FRONTEND_URL_VERCEL = "https://frontp4.vercel.app/"; // URL du frontend sur Vercel
 const FRONTEND_URL_LOCAL = "http://localhost:3000"; // URL de localhost pour le développement local
 
 // Configuration CORS pour Socket.IO

@@ -6,14 +6,13 @@ const cors = require("cors");
 const app = express();
 const server = http.createServer(app);
 
-// Utilise l'URL de ton frontend pour permettre l'accès au backend
-// Si ton frontend est sur Vercel, remplace l'URL ci-dessous par l'URL correcte de ton frontend
-const FRONTEND_URL = "https://backp4.onrender.com/"; // Remplace par l'URL réelle de ton frontend
+// Utilise l'URL de ton frontend local pendant le développement
+const FRONTEND_URL = "http://localhost:3000"; // URL du frontend local
 
 // Configuration CORS pour Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: FRONTEND_URL, // Autoriser les requêtes depuis ton frontend uniquement
+    origin: FRONTEND_URL, // Autoriser les requêtes depuis localhost (frontend local)
     methods: ["GET", "POST"],
   },
 });
@@ -21,7 +20,7 @@ const io = new Server(server, {
 // Configuration CORS pour Express (API REST)
 app.use(
   cors({
-    origin: FRONTEND_URL, // Autoriser les requêtes du frontend
+    origin: FRONTEND_URL, // Autoriser les requêtes de localhost
     methods: ["GET", "POST"],
     credentials: true, // Si tu utilises des cookies ou des informations d'authentification
   })

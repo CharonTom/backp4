@@ -7,7 +7,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*", // Permettre toutes les origines pour les connexions Socket.IO
+    origin: "https://backp4.onrender.com/", // Configurer Socket.IO pour accepter les requêtes de ton frontend
+    methods: ["GET", "POST"],
   },
 });
 

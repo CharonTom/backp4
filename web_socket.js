@@ -5,19 +5,33 @@ const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
+
+// Utilise l'URL de ton frontend pour permettre l'accès au backend
+// Si ton frontend est sur Vercel, remplace l'URL ci-dessous par l'URL correcte de ton frontend
+const FRONTEND_URL = "https://ton-frontend.vercel.app"; // Remplace par l'URL réelle de ton frontend
+
+// Configuration CORS pour Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: "https://backp4.onrender.com/", // Configurer Socket.IO pour accepter les requêtes de ton frontend
+    origin: FRONTEND_URL, // Autoriser les requêtes depuis ton frontend uniquement
     methods: ["GET", "POST"],
   },
 });
 
-app.use(cors());
+// Configuration CORS pour Express (API REST)
+app.use(
+  cors({
+    origin: FRONTEND_URL, // Autoriser les requêtes du frontend
+    methods: ["GET", "POST"],
+    credentials: true, // Si tu utilises des cookies ou des informations d'authentification
+  })
+);
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Serveur WebSocket avec Express est actif !");
 });
 
